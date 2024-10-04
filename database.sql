@@ -1,10 +1,10 @@
--- 1. Membuat Database
+-- 1. создать базу данных
 CREATE DATABASE colors_db;
 
--- 2. Menggunakan Database yang baru dibuat
+-- 2. Использование вновь созданной базы данных
 \c colors_db;
 
--- 3. Membuat Tabel "v_color"
+-- 3. Создание таблицы «v_color»
 CREATE TABLE v_color (
     id SERIAL PRIMARY KEY,
     c_name VARCHAR(50) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE v_color (
     c_rgb VARCHAR(20) NOT NULL
 );
 
--- 4. Memasukkan Data Warna
+-- 4. Ввод данных цвета
 INSERT INTO v_color (c_name, c_hex, c_rgb)
 VALUES 
 ('Red', '#FF0000', 'rgb(255, 0, 0)'),
