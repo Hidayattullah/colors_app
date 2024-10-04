@@ -1,0 +1,27 @@
+@baseUrl = http://127.0.0.1:3000
+
+### 1. Создайте данные цвета
+POST {{baseUrl}}/colors
+Content-Type: application/json
+
+{
+  "c_name": "Purple",
+  "c_hex": "#800080",
+  "c_rgb": "rgb(128, 0, 128)"
+}
+
+### 2. Получить все цвета
+GET {{baseUrl}}/colors
+Accept: application/json
+
+###
+
+### 3. Получите цвет с помощью нумерации страниц
+GET {{baseUrl}}/colors/page?page=1&limit=5
+Accept: application/json
+
+###
+
+### 4. Получить цвет по имени
+GET {{baseUrl}}/colors/yellow
+Accept: application/json

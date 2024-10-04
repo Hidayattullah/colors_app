@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Post, Body } from '@nestjs/common';
 import { ColorService } from './color.service';
 import { Color } from './color.entity';
 
@@ -8,7 +8,7 @@ export class ColorController {
 
   @Get()
   async getAllColors(): Promise<Color[]> {
-    return await this.colorService.findAll(); // Mendapatkan semua warna
+    return await this.colorService.findAll(); // получает все цвета в базе данных
   }
 
   @Get('page')
@@ -21,6 +21,12 @@ export class ColorController {
 
   @Get(':name')
   async getColorByName(@Param('name') name: string): Promise<Color> {
-    return await this.colorService.findByName(name); // Mencari warna berdasarkan nama
+    return await this.colorService.findByName(name); // поиск цветов по названию
+  }
+
+  // Endpoint untuk membuat warna baru
+  @Post()
+  async createColor(@Body() colorData: Partial<Color>): Promise<Color> {
+    return await this.colorService.createColor(colorData); // добавить новые цвета
   }
 }

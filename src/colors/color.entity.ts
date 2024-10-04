@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('v_color') // Sesuaikan dengan nama tabel di database Anda
+@Entity('v_color') 
 export class Color {
   @PrimaryGeneratedColumn()
   id: number;

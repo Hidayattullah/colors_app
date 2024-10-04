@@ -11,7 +11,7 @@ export class ColorService {
   ) {}
 
   async findAll(): Promise<Color[]> {
-    return await this.colorRepository.find(); // Mengambil semua warna
+    return await this.colorRepository.find(); // получает все цвета в базе данных
   }
 
   async findWithPagination(page: number, limit: number): Promise<Color[]> {
@@ -19,12 +19,17 @@ export class ColorService {
     return await this.colorRepository.find({
       skip,
       take: limit,
-    }); // Mengambil warna dengan pagination
+    }); // извлекает цвет на основе нумерации страниц
   }
 
   async findByName(colorName: string): Promise<Color> {
     return await this.colorRepository.findOne({
-      where: { c_name: colorName.toLowerCase() }, // Mencari warna berdasarkan nama
+      where: { c_name: colorName.toLowerCase() }, // поиск цветов по названию
     });
+  }
+
+  async createColor(colorData: Partial<Color>): Promise<Color> {
+    const newColor = this.colorRepository.create(colorData);
+    return await this.colorRepository.save(newColor); // сохраните новый цвет в базе данных
   }
 }
